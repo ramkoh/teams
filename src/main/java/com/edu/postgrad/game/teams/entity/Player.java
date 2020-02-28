@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -32,22 +33,27 @@ public class Player {
     @Column( columnDefinition = "DATE")
     private LocalDate dob;
 
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     @Enumerated(EnumType.STRING)
     @Column(name = "player_position")
     private Position position;
 
+    public int getAge() {
+        return age;
+    }
+
     @ManyToOne(targetEntity = Team.class)
     private Team team;
+
+    @Transient
+    private int age;
 
     public Player(){
 
     }
-
-/*    public Player(final String name, final int jerseyNumber, final LocalDate dob){
-        this.name = name;
-        this.jerseyNumber = jerseyNumber;
-        this.dob = dob;
-    }*/
 
     public void setId(Long id) {
         this.id = id;

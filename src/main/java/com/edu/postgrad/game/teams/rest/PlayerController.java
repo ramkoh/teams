@@ -1,5 +1,7 @@
 package com.edu.postgrad.game.teams.rest;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 
 import com.edu.postgrad.game.teams.entity.Player;
@@ -48,6 +50,8 @@ public class PlayerController {
     @GetMapping("/players")
     public String getAllPlayers(final Model model) {
         Iterable<Player> players = playerRepository.findAll();
+        LocalDate now = LocalDate.now();
+        players.forEach(p -> p.setAge(Period.between(p.getDob(), now).getYears()));
         model.addAttribute("players", players);
         return "view-players";
     }

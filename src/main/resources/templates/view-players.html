@@ -20,6 +20,7 @@
     <tr th:each="player : ${players}">
         <td th:text="${player.name}"></td>
         <td th:text="${player.jerseyNumber}"></td>
+        <td th:text = "${player.age}"/>
     </tr>
 </table>
 
