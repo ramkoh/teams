@@ -1,14 +1,13 @@
 package com.edu.postgrad.game.teams.rest;
 
-import java.util.Optional;
 
+import com.edu.postgrad.game.common.Player;
+import com.edu.postgrad.game.common.Team;
 import com.edu.postgrad.game.teams.PlayerException;
 import com.edu.postgrad.game.teams.TeamException;
 import com.edu.postgrad.game.teams.dao.PlayerRepository;
 import com.edu.postgrad.game.teams.dao.TeamRepository;
-import com.edu.postgrad.game.teams.entity.Player;
-import com.edu.postgrad.game.teams.entity.Position;
-import com.edu.postgrad.game.teams.entity.Team;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,8 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+
 import javax.validation.Valid;
 
 @Controller

@@ -4,9 +4,9 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
 
-import com.edu.postgrad.game.teams.entity.Player;
+import com.edu.postgrad.game.common.Player;
+import com.edu.postgrad.game.common.Position;
 import com.edu.postgrad.game.teams.dao.PlayerRepository;
-import com.edu.postgrad.game.teams.entity.Position;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
