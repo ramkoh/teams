@@ -63,10 +63,10 @@
 			<groupId>com.edu.postgrad</groupId>
 			<artifactId>game-common</artifactId>
 			<version>${version.game.common}</version>
-			<classifier>app-to-import</classifier>
+		<!--	<classifier>app-to-import</classifier>-->
 		</dependency>
 
-		
+
 		<!-- Test dependencies -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

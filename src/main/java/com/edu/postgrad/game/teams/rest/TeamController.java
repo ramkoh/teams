@@ -3,8 +3,8 @@ package com.edu.postgrad.game.teams.rest;
 
 import com.edu.postgrad.game.common.Player;
 import com.edu.postgrad.game.common.Team;
-import com.edu.postgrad.game.teams.PlayerException;
-import com.edu.postgrad.game.teams.TeamException;
+import com.edu.postgrad.game.teams.exception.PlayerException;
+import com.edu.postgrad.game.teams.exception.TeamException;
 import com.edu.postgrad.game.teams.dao.PlayerRepository;
 import com.edu.postgrad.game.teams.dao.TeamRepository;
 
