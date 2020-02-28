@@ -1,0 +1,63 @@
+@startuml
+
+entity com.edu.postgrad.game.common.Player {
+  id (PK)
+  __
+  name
+  age
+  jourseyNumber
+}
+
+entity Team {
+  id (PK)
+  __
+  name
+}
+
+entity Team_Player{
+  id (PK)
+  __
+  playerId
+  teamId
+}
+
+entity Match {
+  id (PK)
+  __
+  date
+  startTime
+  location
+  team1Id
+  team2Id
+ }
+
+entity Player_Match {
+  id (PK)
+  __
+  playerId
+ matchId
+ captainId
+ List scored
+}
+
+entity Tournament {
+  id (PK)
+  __
+  List name
+}
+
+entity Tournament_Match {
+  tournamentId
+  matchId
+}
+
+
+com.edu.postgrad.game.common.Player -right-o{ Team
+Team ||-right-|{ Team_Player
+
+Team -right-o{ Match
+Match ||-right-|{ Player_Match
+
+Match -right-o{ Tournament
+Match ||-right-|{  Tournament_Match
+@enduml

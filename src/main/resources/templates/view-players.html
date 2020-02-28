@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Taco Cloud</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+
+
+
+<body>
+
+<h1>Players list</h1>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Jersey Number</th>
+    </tr>
+    <tr th:each="player : ${players}">
+        <td th:text="${player.name}"></td>
+        <td th:text="${player.jerseyNumber}"></td>
+    </tr>
+</table>
+
+
+<h2  th:text="Name"></h2>
+<h2  th:text="JN"></h2>
+<div th:each="player : ${players}">
+    <input name="name" type="text" th:value="${player.name}" />
+    <input name="jn" type="text" th:value="${player.jerseyNumber}" />
+    <!--<span th:text="${position}">Position</span><br/>-->
+</div>
+<p>
+    <a href="welcome.html" th:href="@{/}">Return to home</a>
+</p>
+
+</body>
+
+
+
+
+
+</html>

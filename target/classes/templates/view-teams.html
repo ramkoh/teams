@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Taco Cloud</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+
+
+
+<body>
+
+<h1>Teams list</h1>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Short Name</th>
+    </tr>
+    <tr th:each="team : ${teams}">
+        <td th:text="${team.name}"></td>
+        <td th:text="${team.code}"></td>
+    </tr>
+</table>
+
+
+
+<p>
+    <a href="welcome.html" th:href="@{/}">Return to home</a>
+</p>
+
+</body>
+
+
+
+
+
+</html>
