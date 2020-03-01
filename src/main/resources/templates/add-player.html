@@ -23,6 +23,10 @@
         <input name="position" type="checkbox" th:value="${position}" />
         <span th:text="${position}">Position</span><br/>
         <span th:if="${#fields.hasErrors('position')}" th:errors="*{position}"></span>
+
+    </div>
+    <div>
+        <input type="date" th:value="${player.dob}" />
     </div>
     <!--<label for="email">Email</label>
     <input type="text" th:field="*{email}" id="email" placeholder="Email">

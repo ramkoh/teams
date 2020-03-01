@@ -9,13 +9,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.PageFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.junit4.SpringRunner;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = TeamsApplication.class)
@@ -28,7 +24,6 @@ public class PlayerControllerSelTest {
 
     @BeforeEach
     public void setUp() throws Exception {
-        //homePage = PageFactory.initElements(driver, PlayerController.class);
         System.setProperty("webdriver.gecko.driver","/home/eramkoh/Tools/geckodriver");
 
     }

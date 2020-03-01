@@ -3,9 +3,19 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Taco Cloud</title>
+    <link rel="stylesheet" th:href="@{/styles.css}"/>
+</head>
+
+
+<body>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Taco Cloud</title>
     <link rel="stylesheet" th:href="@{/styles.css}" />
 </head>
-<form  th:object="${player}" method="post">
+<form th:method="PUT" th:action="@{/player/{id}(id=${player.id})}" th:object="${player}">
 
     <div>
         <label for="name">Name</label>
@@ -18,23 +28,22 @@
         <input type="text" th:field="*{jerseyNumber}" id="jerseyNumber" placeholder="jerseyNumber">
         <span th:if="${#fields.hasErrors('jerseyNumber')}" th:errors="*{jerseyNumber}"></span>
     </div>
-
-    <div th:each="position : ${positions}">
-        <input name="position" type="checkbox" th:value="${position}" />
-        <span th:text="${position}">Position</span><br/>
-        <span th:if="${#fields.hasErrors('position')}" th:errors="*{position}"></span>
-
-    </div>
-    <div>
-        <input type="date" th:value="${player.dob}" />
-    </div>
+    <select name="position" id="position">
+        <option value="0">ALL</option>
+        <option th:each="position : ${positions}"
+                th:value="${position}"
+                th:selected="${player.position == position}"
+                th:text="${position}">
+        </option>
+    </select>
     <!--<label for="email">Email</label>
     <input type="text" th:field="*{email}" id="email" placeholder="Email">
     <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>-->
-
-
     <div>
-        <input type="submit" value="Add User">
+        <input type="date" th:value="${player.dob}" />
+    </div>
+    <div>
+        <input type="submit" value="Edit User">
     </div>
 
 </form>
