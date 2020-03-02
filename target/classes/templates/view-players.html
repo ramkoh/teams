@@ -20,29 +20,15 @@
     </tr>
     <tr th:each="player : ${players}">
       <!--  <form action="#" th:action="@{'/player/{id}'(id=${player.id})}" th:method="PUT" >-->
-        <td th:text="${player.name}"></td>
+        <td th:text="${player.firstName}"></td> <td th:text="${player.lastName}"></td>
         <td th:text="${player.jerseyNumber}"></td>
         <td th:text = "${player.age}"/>
-        <!--<td><a th:href="@{/player(id=${player.id})}" custom:linkMethod="PUT">Update</a></td>-->
-     <!--   <td>
-        <form th:method="PUT" th:action="@{/player/{id}(id=${player.id})}">
-            <button type="submit" name="id" value="${player.id}}" class="link-button">Edit</button>
 
-            <input type="hidden" name="_method" value="PUT"/>
-        </form>
-        </td>-->
         <td><a th:href="@{/player/{id}(id=${player.id},show=view)}" custom:linkMethod="GET">View</a></td></td>
         <td><a th:href="@{/player/{id}(id=${player.id},show=update)}" custom:linkMethod="GET">Update</a></td></td>
-        <td><a th:href="@{/player/{id}(id=${player.id},show=delete)}" custom:linkMethod="DELETE">Update</a></td></td>
 
 
-        <td>
 
-                <input type ="hidden" name="player" value="${player}"/>
-
-
-        </td>
-     <!--   </form>-->
     </tr>
 
 </table>

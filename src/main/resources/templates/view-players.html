@@ -20,7 +20,7 @@
     </tr>
     <tr th:each="player : ${players}">
       <!--  <form action="#" th:action="@{'/player/{id}'(id=${player.id})}" th:method="PUT" >-->
-        <td th:text="${player.name}"></td>
+        <td th:text="${player.firstName}"></td> <td th:text="${player.lastName}"></td>
         <td th:text="${player.jerseyNumber}"></td>
         <td th:text = "${player.age}"/>
 

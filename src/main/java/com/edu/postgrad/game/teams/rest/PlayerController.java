@@ -2,8 +2,6 @@ package com.edu.postgrad.game.teams.rest;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.List;
-import java.util.Optional;
 
 import com.edu.postgrad.game.common.Player;
 import com.edu.postgrad.game.common.Position;
@@ -87,7 +85,7 @@ public class PlayerController {
         }
 
         playerRepository.save(player);
-        model.addAttribute("name", player.getName());
+        model.addAttribute("lastName", player.getLastName());
         return "welcome";
     }
 

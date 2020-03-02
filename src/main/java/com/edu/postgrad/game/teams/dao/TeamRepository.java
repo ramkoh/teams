@@ -1,7 +1,13 @@
 package com.edu.postgrad.game.teams.dao;
 
-import com.edu.postgrad.game.common.Team;
-import org.springframework.data.repository.CrudRepository;
+import java.util.List;
 
-public interface TeamRepository extends CrudRepository<Team, Long> {
+import com.edu.postgrad.game.common.Player;
+import com.edu.postgrad.game.common.Team;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.PagingAndSortingRepository;
+
+public interface TeamRepository extends PagingAndSortingRepository<Team, Long>{
+    @Query("select t.players from Team t where t.id = ?1")
+    public List<Player> findPlayersById(Long teamId);
 }

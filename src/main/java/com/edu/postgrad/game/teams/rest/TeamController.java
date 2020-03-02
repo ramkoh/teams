@@ -1,6 +1,8 @@
 package com.edu.postgrad.game.teams.rest;
 
 
+import java.util.List;
+
 import com.edu.postgrad.game.common.Player;
 import com.edu.postgrad.game.common.Team;
 import com.edu.postgrad.game.teams.exception.PlayerException;
@@ -9,6 +11,9 @@ import com.edu.postgrad.game.teams.dao.PlayerRepository;
 import com.edu.postgrad.game.teams.dao.TeamRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -55,9 +60,17 @@ public class TeamController {
         return "welcome";
     }
 
+    @GetMapping("/team/{id}/players")
+    public String getPlayers(@PathVariable Long id, Model model){
+        List<Player> players = teamRepository.findPlayersById(id);
+        model.addAttribute("players", players);
+        return "view-players";
+    }
+
     @GetMapping("/teams")
     public String getAllPlayers(final Model model) {
-        Iterable<Team> players = teamRepository.findAll();
+        Pageable pageable = PageRequest.of(0, 20, Sort.by("name"));
+        Iterable<Team> players = teamRepository.findAll(pageable);
         model.addAttribute("teams", players);
         return "view-teams";
     }
