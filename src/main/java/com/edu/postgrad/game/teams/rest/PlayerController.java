@@ -2,6 +2,7 @@ package com.edu.postgrad.game.teams.rest;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.Optional;
 
 import com.edu.postgrad.game.common.Player;
 import com.edu.postgrad.game.common.Position;
@@ -25,7 +26,7 @@ public class PlayerController {
     @Autowired
     PlayerRepository playerRepository;
 
-    @GetMapping({"/"})
+    @GetMapping({"/welcome"})
     public String hello(Model model, @RequestParam(value="name", required=false, defaultValue="World") String name) {
         model.addAttribute("name", name);
         return "welcome";
@@ -35,6 +36,7 @@ public class PlayerController {
     public String addPlayerStartUp(final Model model) {
         model.addAttribute("player", new Player());
         model.addAttribute("positions", Position.values());
+        model.addAttribute("message", null);
         return "add-player";
     }
 
@@ -69,11 +71,14 @@ public class PlayerController {
 
     @DeleteMapping("/player/{id}")
     public String deletePlayer( @PathVariable final Long id, Model model) {
+        Player player = playerRepository.findById(id).orElseThrow(PlayerException::new);
         playerRepository.deleteById(id);
         Iterable<Player> players = playerRepository.findAll();
         LocalDate now = LocalDate.now();
         players.forEach(p -> p.setAge(Period.between(p.getDob(), now).getYears()));
         model.addAttribute("players", players);
+        model.addAttribute("message", String.format("Player %s %s deleted successfully", player.getFirstName(),
+                player.getLastName()));
         return "view-players";
     }
 
@@ -85,15 +90,17 @@ public class PlayerController {
         }
 
         playerRepository.save(player);
-        model.addAttribute("lastName", player.getLastName());
-        return "welcome";
+        model.addAttribute("player", player);
+        model.addAttribute("message", String.format("Player %s %s created successfully", player.getFirstName(),
+                player.getLastName()));
+        return "add-player";
     }
 
     @GetMapping("/players")
     public String getAllPlayers(final Model model) {
         Iterable<Player> players = playerRepository.findAll();
         LocalDate now = LocalDate.now();
-        players.forEach(p -> p.setAge(Period.between(p.getDob(), now).getYears()));
+        players.forEach(p -> p.setAge(Period.between(Optional.of(p.getDob()).orElse(now), now).getYears()));
         model.addAttribute("players", players);
         return "view-players";
     }

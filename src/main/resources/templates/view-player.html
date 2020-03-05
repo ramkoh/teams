@@ -3,49 +3,41 @@
       xmlns:th="http://www.thymeleaf.org" xmlns:custom="http://www.w3.org/1999/xhtml">
 <head>
     <title>Taco Cloud</title>
-    <link rel="stylesheet" th:href="@{/styles.css}" />
+    <link rel="stylesheet" th:href="@{/views.css}"/>
 </head>
 
+<form th:method="DELETE" th:action="@{/player/{id}(id=${player.id})}" th:object="${player}">
+    <div class="container">
 
+        <h1>View Player</h1>
+        <hr>
 
-<body>
+        <label for="first" class="view-left">First Name</label>
+        <span th:text="${player.firstName}" class="view-right"/>
+        <hr>
+        <label for="last" class="view-left">Last Name</label>
+        <span th:text="${player.lastName}" class="view-right"/>
+        <hr>
+        <label for="last" class="view-left">Jersey Number</label>
+        <span th:text="${player.jerseyNumber}" class="view-right"/>
+        <hr>
+        <label for="last" class="view-left">Position</label>
+        <span th:text="${player.position}" class="view-right"/>
+        <hr>
+        <label for="last" class="view-left">Age</label>
+        <span th:text="${player.age}" class="view-right"/>
+        <hr>
 
+        <button type="submit" class="btn">Delete User</button>
+        <input type="hidden" name="_method" value="DELETE"/>
 
-<tr>
-    <td>Last Name</td>
-    <td th:text="${player.lastName}"></td>
-</tr>
-<tr>
-    <td>First Name</td>
-    <td th:text="${player.firstName}"></td>
-</tr>
-<tr>
-    <td>Jersey Number</td>
-    <td th:text="${player.jerseyNumber}"></td>
-</tr>
+        </tr>
 
-<tr>
-    <td>Age</td>
-    <td th:text = "${player.age}"/>
-</tr>
-<tr>
-    <form th:method="DELETE" th:action="@{/player/{id}(id=${player.id})}" th:object="${player}">
-       <!-- <td><a th:href="@{/player/{id}(id=${player.id})}" custom:linkMethod="POST">Delete</a></td></td>-->
-        <input type="submit" value="Delete User">
-        <input type="hidden" name="_method" value="DELETE" />
-    </form>
-</tr>
-
-
-
-<p>
-    <a href="welcome.html" th:href="@{/}">Return to home</a>
-</p>
-
-</body>
-
-
-
+    </div>
+</form>
+<div class="container returnTo">
+    <a th:href="@{/}">Return to Home</a>
+</div>
 
 
 </html>

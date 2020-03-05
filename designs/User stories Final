@@ -1,0 +1,242 @@
+0) View Home Page
+
+As a user
+I want to see the home page
+Because I want to navigate to other links to perform CRUD on players and teams
+
+Scenario User navigates to Home Page os the site
+Given
+    Application is running the server
+When
+    User opens link of Home Page in a browser
+Then
+    Home Page contains like to Add Player
+And
+    Home Page contains like to View Players
+And
+    Home Page contains like to Add Team
+And
+    Home Page contains like to View Teams
+
+===================================================
+1) Feature Add Player
+
+As an admin
+I want to create  a Player
+Because I want to create a football team
+
+Scenario Admin creates a player
+Given
+    Admin is on home page of the website
+And
+    Admin clicks on "Create Player" link
+And
+    Admin fills out first and last name of player
+And
+    Admin fills out Data of Birth of player
+And
+    Admin fills out Position of player
+And
+        Admin fills out Jersey Number of player
+When
+    Admin Clicks on Create Player link
+Then
+    Player created message should be displayed on screen
+
+===================================================
+
+2) Feature View Players
+As a user
+I want to see a list of all players in the system
+Because I want to see which players exist in system
+
+Scenario User views all existing players
+Given
+    User is on home page of the website
+When
+    User clicks on "View Players" link
+Then
+    User is presented with a list of players
+And
+    Each row has first and last name of player
+And
+    Each row has have Date of Birth of player
+And
+    Each row has a Position of player
+And
+    Each row has a Jersey Number of player
+And
+    Each row has "View", "Update", "Delete" and "Add to Team".
+===================================================
+3) Feature Add Team
+
+As an admin
+I want to create  a Team
+Because I want to add players to the team
+
+Scenario Admin creates a team
+Given
+    Admin is on home page of the website
+And
+    Admin clicks on "Create Team" link
+And
+    Admin fills out name of the team
+And
+    Admin fills out Short name of the team
+When
+    Admin Clicks on Create Team button
+Then
+    "Team created message" should be displayed on screen
+
+
+===================================================
+4) Feature View Teams
+As a user
+I want to see a list of all teams in the system
+Because I want to see which teams exist in system
+
+Scenario User views all existing teams
+Given
+    User is on home page of the website
+When
+    User clicks on "View Teams" link
+Then
+    User is presented with a list of team
+And
+    Each row has name and short name of team
+And
+    Each row has "View", "Update" and "Delete" dummy links.
+
+===================================================
+5) Add players to the Team
+As a user
+I want to see a list of all team in the system
+Because I want to see which teams exist in system
+
+Scenario User views all existing teams
+Given
+     User is on home page of the website
+And
+     User clicks on "View Players" link
+And
+    User is presented with a list of players
+And
+    User clicks on "Add to Team" link
+And
+    User fills out a valid team name
+When
+    User clicks on Add button
+Then
+    User is shown a successful message on screen that - Player <x> is added to team to <y>
+===================================================
+6) View players of a Team
+As a user
+I want to see a list of all players of a team
+Because I want to see which players are playing for a team
+
+Scenario User views all existing teams
+Given
+     User is on home page of the website
+And
+     User clicks on "View Players" link
+And
+    User is presented with a list of players
+And
+    User clicks on "Add to Team" link
+And
+    User fills out a valid team name
+When
+    User clicks on Add button
+Then
+    User is shown a successful message on screen that - Player <x> is added to team to <y>
+===================================================
+7) Feature View Player
+
+As a user
+I want to view a Player
+Because I want to see player's details
+
+Scenario User views a player details
+Given
+    Admin is on home page of the website
+And
+    Admin clicks on "View Players" link
+
+When
+    Admin Clicks on View Player link
+Then
+    Player's details should be displayed on screen
+
+===================================================
+7) Feature Delete Player
+
+As an admin
+I want to delete a Player
+Because player does not play any more
+
+Scenario User deletes a player
+Given
+    User is on home page of the website
+And
+    Admin clicks on "View Players" link
+
+When
+    Admin Clicks on Delete Player link
+Then
+    "Player <x> successfully deleted" message should be shown on screen
+
+===================================================
+8) Feature Delete Team
+
+As an admin
+I want to delete a team
+Because team does not exist any more
+
+Scenario User deletes a team
+Given
+    User is on home page of the website
+And
+    Admin clicks on "View Teams" link
+
+When
+    Admin Clicks on Delete Team link
+Then
+    "Team <x> successfully deleted" message should be shown on screen
+===================================================
+9) Feature Update Player
+
+As an admin
+I want to update the details of a Player
+Because existing information is out of date
+
+Scenario Admin updates a player
+Given
+    Admin is on home page of the website
+And
+    Admin clicks on "View Players" link
+
+When
+    Admin Clicks on Update Player link
+And
+    Admin changes the position of player
+Then
+    "Player <x> successfully updated" message should be shown on screen
+===================================================
+10) Feature Update Team
+
+As an admin
+I want to update the details of a Team
+Because existing information is out of date
+
+Scenario Admin updates a team
+Given
+    Admin is on home page of the website
+And
+    Admin clicks on "View Teams" link
+
+When
+    Admin Clicks on Update Team link
+And
+    Admin changes the name of team
+Then
+    "Team <x> successfully updated" message should be shown on screen
