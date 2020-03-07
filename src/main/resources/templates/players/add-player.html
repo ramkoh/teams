@@ -36,7 +36,7 @@
         </br>
 
         <label for="dob">Date of Birth</label>
-        <input type="date" th:value="${player.dob}" />
+        <input type="date" th:field="*{dob}" th:value="${player.dob}" />
         <span th:if="${#fields.hasErrors('dob')}" th:errors="*{dob}"></span>
 
         <hr>

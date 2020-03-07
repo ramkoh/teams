@@ -10,6 +10,7 @@ import com.edu.postgrad.game.teams.exception.TeamException;
 import com.edu.postgrad.game.teams.dao.PlayerRepository;
 import com.edu.postgrad.game.teams.dao.TeamRepository;
 
+import com.edu.postgrad.game.teams.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -28,24 +29,21 @@ import javax.validation.Valid;
 public class TeamController {
 
     @Autowired
-    TeamRepository teamRepository;
+    TeamService teamService;
 
-    @Autowired
-    PlayerRepository playerRepository;
 
     @GetMapping("/team")
-    public String showSignUpForm(final Model model) {
+    public String showAddTeamForm(final Model model) {
         model.addAttribute("team", new Team());
         return "add-team";
     }
 
     @PostMapping("/team")
-    public String addUser(@Valid Team team, BindingResult result, Model model) {
+    public String addTeam(@Valid Team team, BindingResult result, Model model) {
         if (result.hasErrors()) {
             return "add-team";
         }
-
-        teamRepository.save(team);
+        teamService.saveTeam(team);
         model.addAttribute("name", team.getName());
         return "welcome";
     }
@@ -67,8 +65,8 @@ public class TeamController {
     }*/
 
     @GetMapping("/team/{id}/players")
-    public String getPlayers(@PathVariable Long id, Model model){
-        List<Player> players = teamRepository.findPlayersById(id);
+    public String getPlayers(@PathVariable Long id, Model model) {
+        List<Player> players = teamService.getPlayersOfTeam(id);
         model.addAttribute("players", players);
         model.addAttribute("source", "teams");
         return "players/view-players";
@@ -76,9 +74,8 @@ public class TeamController {
 
     @GetMapping("/teams")
     public String getAllPlayers(final Model model) {
-        Pageable pageable = PageRequest.of(0, 20, Sort.by("name"));
-        Iterable<Team> players = teamRepository.findAll(pageable);
-        model.addAttribute("teams", players);
+        Iterable<Team> teams = teamService.getAllTeams();
+        model.addAttribute("teams", teams);
         return "view-teams";
     }
 }

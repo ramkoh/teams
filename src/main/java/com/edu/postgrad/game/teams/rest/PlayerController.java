@@ -8,6 +8,7 @@ import com.edu.postgrad.game.common.Player;
 import com.edu.postgrad.game.common.Position;
 import com.edu.postgrad.game.teams.dao.PlayerRepository;
 import com.edu.postgrad.game.teams.exception.PlayerException;
+import com.edu.postgrad.game.teams.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +26,8 @@ public class PlayerController {
 
     @Autowired
     PlayerRepository playerRepository;
+    @Autowired
+    PlayerService playerService;
 
     @GetMapping("/player")
     public String addPlayerStartUp(final Model model) {
@@ -37,10 +40,9 @@ public class PlayerController {
     @GetMapping("/player/{id}")
     public String getPlayerById(final Model model, @PathVariable final Long id,
                                 @RequestParam String show) {
-        Player player = playerRepository.findById(id).orElseThrow(PlayerException::new);
-        LocalDate now = LocalDate.now();
-        player.setAge(Period.between(player.getDob(), now).getYears());
+        final Player player = playerService.getPlayerById(id);
         model.addAttribute("player", player);
+
         if("update".equals(show)){
             model.addAttribute("positions", Position.values());
             return "players/update-player";
@@ -65,14 +67,14 @@ public class PlayerController {
 
     @DeleteMapping("/player/{id}")
     public String deletePlayer( @PathVariable final Long id, Model model) {
-        Player player = playerRepository.findById(id).orElseThrow(PlayerException::new);
-        playerRepository.deleteById(id);
-        Iterable<Player> players = playerRepository.findAll();
-        LocalDate now = LocalDate.now();
-        players.forEach(p -> p.setAge(Period.between(p.getDob(), now).getYears()));
+        final Player player = playerService.getPlayerById(id);
+        playerService.deletePlayerById(id);
+        Iterable<Player> players = playerService.getAllPlayers();
+
         model.addAttribute("players", players);
         model.addAttribute("message", String.format("Player %s %s deleted successfully", player.getFirstName(),
                 player.getLastName()));
+
         return "players/view-players";
     }
 
@@ -84,7 +86,7 @@ public class PlayerController {
             return "players/add-player";
         }
 
-        playerRepository.save(player);
+        playerService.savePlayer(player);
         model.addAttribute("player", player);
         model.addAttribute("message", String.format("Player %s %s created successfully", player.getFirstName(),
                 player.getLastName()));
@@ -93,9 +95,7 @@ public class PlayerController {
 
     @GetMapping("/players")
     public String getAllPlayers(final Model model) {
-        Iterable<Player> players = playerRepository.findAll();
-        LocalDate now = LocalDate.now();
-        players.forEach(p -> p.setAge(Period.between(Optional.of(p.getDob()).orElse(now), now).getYears()));
+        Iterable<Player> players = playerService.getAllPlayers();
         model.addAttribute("players", players);
         model.addAttribute("source", "players");
         return "players/view-players";

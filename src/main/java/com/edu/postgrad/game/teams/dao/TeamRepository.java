@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 public interface TeamRepository extends PagingAndSortingRepository<Team, Long>{
+
     @Query("select t.players from Team t where t.id = ?1")
     public List<Player> findPlayersById(Long teamId);
 }
