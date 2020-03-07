@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Taco Cloud</title>
+    <title>Football App</title>
     <link rel="stylesheet" th:href="@{/views.css}" />
 </head>
 
@@ -21,7 +21,7 @@
         <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
 
         <label for="jerseyNumber">Jersey Number</label>
-        <input type="text" th:field="*{jerseyNumber}" id="jerseyNumber" placeholder="jerseyNumber">
+        <input type="text" th:field="*{jerseyNumber}" id="jerseyNumber">
         <span th:if="${#fields.hasErrors('jerseyNumber')}" th:errors="*{jerseyNumber}"></span>
 
         <label for="position">Position</label>
@@ -41,7 +41,6 @@
 
         <hr>
 
-        <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
         <button type="submit" class="btn">Add Player</button>
     </div>
     <div class="container returnTo">

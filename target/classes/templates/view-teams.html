@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org" xmlns:custom="http://www.w3.org/1999/xhtml">
 <head>
     <title>Taco Cloud</title>
-    <link rel="stylesheet" th:href="@{/styles.css}" />
+    <link rel="stylesheet" th:href="@{/views.css}" />
 </head>
 
 
@@ -16,6 +16,7 @@
     <tr>
         <th>Name</th>
         <th>Short Name</th>
+        <th>View Players</th>
     </tr>
     <tr th:each="team : ${teams}">
         <td th:text="${team.name}"></td>

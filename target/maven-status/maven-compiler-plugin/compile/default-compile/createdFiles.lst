@@ -4,6 +4,7 @@ com/edu/postgrad/game/teams/dao/PlayerRepository.class
 com/edu/postgrad/game/teams/exception/TeamException.class
 com/edu/postgrad/game/teams/Configuration.class
 com/edu/postgrad/game/teams/rest/TeamController.class
+com/edu/postgrad/game/teams/rest/CommonController.class
 com/edu/postgrad/game/teams/SampleRest.class
 com/edu/postgrad/game/teams/dao/TeamRepository.class
 com/edu/postgrad/game/teams/TeamsApplication.class

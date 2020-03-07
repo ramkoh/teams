@@ -5,6 +5,7 @@
 /home/eramkoh/SHARED/teams/src/main/java/com/edu/postgrad/game/teams/rest/HomeController.java
 /home/eramkoh/SHARED/teams/src/main/java/com/edu/postgrad/game/teams/Configuration.java
 /home/eramkoh/SHARED/teams/src/main/java/com/edu/postgrad/game/teams/rest/TeamController.java
+/home/eramkoh/SHARED/teams/src/main/java/com/edu/postgrad/game/teams/rest/CommonController.java
 /home/eramkoh/SHARED/teams/src/main/java/com/edu/postgrad/game/teams/exception/TeamException.java
 /home/eramkoh/SHARED/teams/src/main/java/com/edu/postgrad/game/teams/dao/TeamRepository.java
 /home/eramkoh/SHARED/teams/src/main/java/com/edu/postgrad/game/teams/SampleRest.java

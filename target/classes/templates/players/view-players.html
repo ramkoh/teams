@@ -19,17 +19,19 @@
         <th>Last Name</th>
         <th>Jersey Number</th>
         <th>Age</th>
-        <th>View Player</th>
-        <th>Update Player</th>
+        <th th:if="${source == 'players'}">Add to Team</th>
+        <th th:if="${source == 'players'}">View Player</th>
+        <th th:if="${source == 'players'}">Update Player</th>
     </tr>
     <tr th:each="player : ${players}">
       <!--  <form action="#" th:action="@{'/player/{id}'(id=${player.id})}" th:method="PUT" >-->
         <td th:text="${player.firstName}"></td> <td th:text="${player.lastName}"></td>
         <td th:text="${player.jerseyNumber}"></td>
         <td th:text = "${player.age}"/>
+        <td th:if="${source == 'players'}"><a  th:href="@{/player/{id}/teams/(id=${player.id})}" custom:linkMethod="GET">Add to Team...</a></td></td>
 
-        <td><a th:href="@{/player/{id}(id=${player.id},show=view)}" custom:linkMethod="GET">View</a></td></td>
-        <td><a th:href="@{/player/{id}(id=${player.id},show=update)}" custom:linkMethod="GET">Update</a></td></td>
+        <td th:if="${source == 'players'}" ><a th:href="@{/player/{id}(id=${player.id},show=view)}" custom:linkMethod="GET">View</a></td></td>
+        <td th:if="${source == 'players'}"><a th:href="@{/player/{id}(id=${player.id},show=update)}" custom:linkMethod="GET">Update</a></td></td>
 
 
 

@@ -20,6 +20,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 
@@ -49,22 +50,28 @@ public class TeamController {
         return "welcome";
     }
 
-    @PostMapping("/team/{teamId}/player/{playerId}")
-    public String addPlayerToTeam(@PathVariable final Long teamId, @PathVariable final Long playerId) {
-        Team team = teamRepository.findById(teamId).orElseThrow(TeamException::new);
 
-        Player player = playerRepository.findById(playerId).orElseThrow(PlayerException::new);
-        team.addPlayer(player);
+
+   /* @GetMapping("/addPlayerToTeam")
+    public String addPlayerToTeam(@Valid Team team, BindingResult result, Model model) {
+        Team existingTeam = teamRepository.findById(team.getId()).orElseThrow(TeamException::new);
+        if (result.hasErrors()) {
+            return "add-player-to-team";
+        }
+        Player player = playerRepository.findById(Long.parseLong( model.getAttribute("playerId").toString()))
+                .orElseThrow(PlayerException::new);
+        existingTeam.addPlayer(player);
 
         teamRepository.save(team);
-        return "welcome";
-    }
+        return "player/view-players";
+    }*/
 
     @GetMapping("/team/{id}/players")
     public String getPlayers(@PathVariable Long id, Model model){
         List<Player> players = teamRepository.findPlayersById(id);
         model.addAttribute("players", players);
-        return "view-players";
+        model.addAttribute("source", "teams");
+        return "players/view-players";
     }
 
     @GetMapping("/teams")
