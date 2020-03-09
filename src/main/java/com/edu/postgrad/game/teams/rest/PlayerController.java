@@ -24,8 +24,8 @@ import javax.validation.Valid;
 @Controller
 public class PlayerController {
 
-    @Autowired
-    PlayerRepository playerRepository;
+    /*@Autowired
+    PlayerRepository playerRepository;*/
     @Autowired
     PlayerService playerService;
 
@@ -50,7 +50,7 @@ public class PlayerController {
         return "players/view-player";
     }
 
-    @PutMapping("/player/{id}")
+   /* @PutMapping("/player/{id}")
     public String updatePlayer( @PathVariable final Long id,
                                 @Valid Player player, BindingResult result, Model model) {
          if (result.hasErrors()) {
@@ -58,12 +58,12 @@ public class PlayerController {
         }
       Player existingPlayer = playerRepository.findById(id).orElseThrow(PlayerException::new);
       //Player updatedPlayer = (Player) model.getAttribute("player");
-         /*if(player.getAge() != updatedPlayer.getAge()){
+         *//*if(player.getAge() != updatedPlayer.getAge()){
              new PlayerException("Age cannot be changed, it's not saved to DB.");
-        }*/
+        }*//*
         playerRepository.save(existingPlayer);
         return "players/update-player";
-    }
+    }*/
 
     @DeleteMapping("/player/{id}")
     public String deletePlayer( @PathVariable final Long id, Model model) {
