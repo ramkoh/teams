@@ -6,6 +6,7 @@ import com.edu.postgrad.game.common.Player;
 import com.edu.postgrad.game.common.Team;
 import com.edu.postgrad.game.teams.dao.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -22,9 +23,15 @@ public class TeamService {
         teamRepository.save(team);
     }
 
-    public Iterable<Team> getAllTeams(){
+    public Page<Team> getAllTeams(){
         Pageable  pageable = PageRequest.of(0, 20, Sort.by("name"));
-        Iterable<Team> teams = teamRepository.findAll(pageable);
+        Page<Team> teams = teamRepository.findAll(pageable);
+        return teams;
+    }
+
+    public List<Team> getSortedTeams(Pageable pageable){
+        List<Team> teams = teamRepository.findAll(pageable.getSort());
+        //List<Team> teams = teamRepository.findAll(Sort.by("name").descending().and(Sort.by("code")));
         return teams;
     }
 

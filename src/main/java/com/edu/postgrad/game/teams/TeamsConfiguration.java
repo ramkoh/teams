@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties("teams-service")
 @Component
 @RefreshScope
-public class Configuration {
+public class TeamsConfiguration {
     private String prop1;
 
     public String getProp1() {
