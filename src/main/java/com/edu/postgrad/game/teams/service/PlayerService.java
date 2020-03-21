@@ -22,8 +22,9 @@ public class PlayerService {
         return player;
     }
 
-    public void savePlayer(final Player player){
-        playerRepository.save(player);
+    public Long savePlayer(Player player){
+        player = playerRepository.save(player);
+        return player.getId();
     }
 
     public void deletePlayerById(final Long playerId){

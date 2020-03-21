@@ -5,6 +5,7 @@ import java.util.List;
 import com.edu.postgrad.game.common.Player;
 import com.edu.postgrad.game.common.Team;
 import com.edu.postgrad.game.teams.dao.TeamRepository;
+import com.edu.postgrad.game.teams.exception.TeamException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -40,6 +41,13 @@ public class TeamService {
         return players;
     }
 
+    public Team getTeamById(final Long teamId){
+        return teamRepository.findById(teamId).orElseThrow(TeamException::new);
+    }
 
+    public void deleteTeam(final Long teamId){
+        final Team team = getTeamById(teamId);
+        teamRepository.delete(team);
+    }
 
 }
