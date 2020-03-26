@@ -2,11 +2,14 @@ package com.edu.postgrad.game.teams.rest.ms;
 
 
 import java.util.List;
+import java.util.Optional;
 
 import com.edu.postgrad.game.common.Player;
 import com.edu.postgrad.game.common.Team;
+import com.edu.postgrad.game.teams.exception.PlayerException;
 import com.edu.postgrad.game.teams.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +32,13 @@ public class TeamMSController {
     @Autowired
     TeamService teamService;
 
+    @GetMapping("/teams/{id}")
+    public ResponseEntity<Team> getTeamById(@PathVariable Long id) {
+        Team team = teamService.getTeamById(id);
+        return new ResponseEntity<Team>(team, HttpStatus.OK);
+    }
+
+
     @PostMapping("/team")
     public ResponseEntity<Team> addTeam(@RequestBody Team team) {
         teamService.saveTeam(team);
@@ -49,21 +59,22 @@ public class TeamMSController {
     }
 
     @GetMapping("/team/{id}/players")
-    public ResponseEntity<List<Player>> getPlayers(@PathVariable Long id) {
-        List<Player> players = teamService.getPlayersOfTeam(id);
-        return new ResponseEntity<List<Player>>(players, HttpStatus.OK);
+    public List<Player> getPlayersOfTeam(@PathVariable Long id) {
+        List<Player> players = Optional.ofNullable(teamService.getPlayersOfTeam(id))
+                .orElseThrow(PlayerException::new);
+        return players;
     }
 
     @GetMapping("/teams")
-    public ResponseEntity<Iterable<Team>> getAllTeams(final Pageable pageable) {
-        Iterable<Team> teams = teamService.getAllTeams();
-        return new ResponseEntity<Iterable<Team>>(teams, HttpStatus.OK);
+    public Page<Team> getAllTeams(final Pageable pageable) {
+        Page<Team> teams = Optional.ofNullable(teamService.getAllTeams())
+                .orElseThrow(PlayerException::new);
+        return teams;
     }
 
-    @GetMapping("/teams/{id}")
-    public ResponseEntity<Team> getTeamById(@PathVariable Long id) {
-        Team team = teamService.getTeamById(id);
+    @GetMapping("team/{name}")
+    public ResponseEntity<Team> getTeamByName(@PathVariable  String name){
+        Team team = teamService.getTeamByName(name);
         return new ResponseEntity<Team>(team, HttpStatus.OK);
     }
-
 }

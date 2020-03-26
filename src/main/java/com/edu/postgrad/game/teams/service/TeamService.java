@@ -50,4 +50,8 @@ public class TeamService {
         teamRepository.delete(team);
     }
 
+    public Team getTeamByName(final String name){
+        return teamRepository.findTeamByName(name).orElseThrow(TeamException::new);
+    }
+
 }

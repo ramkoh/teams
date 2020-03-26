@@ -1,10 +1,11 @@
-com/edu/postgrad/game/teams/rest/HomeController.class
-com/edu/postgrad/game/teams/rest/PlayerController.class
+com/edu/postgrad/game/teams/service/PlayerService.class
+com/edu/postgrad/game/teams/rest/ms/TeamMSController.class
 com/edu/postgrad/game/teams/dao/PlayerRepository.class
+com/edu/postgrad/game/teams/TeamsConfiguration.class
 com/edu/postgrad/game/teams/exception/TeamException.class
-com/edu/postgrad/game/teams/Configuration.class
-com/edu/postgrad/game/teams/rest/TeamController.class
 com/edu/postgrad/game/teams/rest/CommonController.class
+com/edu/postgrad/game/teams/service/TeamService.class
+com/edu/postgrad/game/teams/rest/ms/PlayerMSController.class
 com/edu/postgrad/game/teams/SampleRest.class
 com/edu/postgrad/game/teams/dao/TeamRepository.class
 com/edu/postgrad/game/teams/TeamsApplication.class
