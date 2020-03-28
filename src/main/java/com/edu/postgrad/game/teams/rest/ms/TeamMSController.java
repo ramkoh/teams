@@ -4,6 +4,8 @@ package com.edu.postgrad.game.teams.rest.ms;
 import java.util.List;
 import java.util.Optional;
 
+import brave.ScopedSpan;
+import brave.Tracer;
 import com.edu.postgrad.game.common.Player;
 import com.edu.postgrad.game.common.Team;
 import com.edu.postgrad.game.teams.exception.PlayerException;
@@ -31,6 +33,9 @@ public class TeamMSController {
 
     @Autowired
     TeamService teamService;
+
+    @Autowired
+    Tracer tracer;
 
     @GetMapping("/teams/{id}")
     public ResponseEntity<Team> getTeamById(@PathVariable Long id) {
@@ -67,6 +72,8 @@ public class TeamMSController {
 
     @GetMapping("/teams")
     public Page<Team> getAllTeams(final Pageable pageable) {
+        ScopedSpan scopedSpan = tracer.startScopedSpan("teams-service");
+        scopedSpan.annotate("getAllTeams");
         Page<Team> teams = Optional.ofNullable(teamService.getAllTeams())
                 .orElseThrow(PlayerException::new);
         return teams;
