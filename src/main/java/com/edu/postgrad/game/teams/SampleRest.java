@@ -24,7 +24,7 @@ public class SampleRest {
 
     @GetMapping("hello2")
     public String hello2(){
-        return config.getProp1();
+        return config.getPlayerFirstName();
     }
 
     @GetMapping("invoke/{serviceId}/{serviceDescription}")

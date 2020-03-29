@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.edu.postgrad.game.common.Player;
+import com.edu.postgrad.game.teams.TeamsConfiguration;
 import com.edu.postgrad.game.teams.exception.PlayerException;
 import com.edu.postgrad.game.teams.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,9 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 public class PlayerMSController {
     @Autowired
     PlayerService playerService;
+
+    @Autowired
+    TeamsConfiguration teamsConfiguration;
 
     @GetMapping("player/{id}")
     public ResponseEntity<Player> getPlayerById( @PathVariable final Long id) {
@@ -60,9 +64,9 @@ public class PlayerMSController {
         return players;
     }
 
-    @GetMapping("player/name/{name}")
-    public ResponseEntity<Player> getPayerByName(@PathVariable String name){
-        Player player = playerService.getPlayerByFirstName(name);
+    @GetMapping(value = {"player/name", "player/name/{name}"})
+    public ResponseEntity<Player> getPayerByName(@PathVariable(required = false) Optional<String> name){
+        Player player = playerService.getPlayerByFirstName( name.orElse(teamsConfiguration.getPlayerFirstName()));
         return new ResponseEntity<>(player, HttpStatus.OK);
     }
 

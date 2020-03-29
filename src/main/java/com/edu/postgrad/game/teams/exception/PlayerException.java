@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class PlayerException extends RuntimeException {
 
     public PlayerException() {
+        super("Player not found!");
     }
 
     public PlayerException(String message) {

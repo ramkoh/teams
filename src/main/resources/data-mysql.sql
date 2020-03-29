@@ -31,17 +31,20 @@ insert into players (id, first_name, last_name, jersey_number, player_position, 
 insert into players (id, first_name, last_name, jersey_number, player_position, dob, country_of_birth) values (27, 'Gianluigi', 'Donnarumma', '22', 'GOAL_KEEPER', '1999-02-25', 'Italy');
 insert into players (id, first_name, last_name, jersey_number, player_position, dob, country_of_birth) values (28, 'Leonardo', 'Bonucci', '19', 'DEFENDER', '1987-05-01', 'Italy');
 
+-- native profile player
+insert into players (id, first_name, last_name, jersey_number, player_position, dob, country_of_birth) values (29,'native', 'I am player for Native profile', '10', 'FORWARD', '1987-06-24', 'Native Profile');
+insert into players (id, first_name, last_name, jersey_number, player_position, dob, country_of_birth) values (30, 'dev', 'I am player for Dev profile', '10', 'FORWARD', '1987-06-24', 'Dev Profile');
+insert into players (id, first_name, last_name, jersey_number, player_position, dob, country_of_birth) values (31, 'prod' 'I am player for Production profile', '', '10', 'FORWARD', '1987-06-24', 'Production Profile');
 
 
 
-
-insert into teams(id, name, code) values (1, 'Germany', 'GER');
-insert into teams(id, name, code) values (2, 'Italy', 'ITA');
-insert into teams(id, name, code) values (3, 'Switzerland', 'SUI');
-insert into teams(id, name, code) values (4, 'Russia', 'RUS');
-insert into teams(id, name, code) values (5, 'Norway', 'NOR');
-insert into teams(id, name, code) values (6, 'Mexico', 'MEX');
-insert into teams(id, name, code) values (7, 'Denmark', 'DEN');
+insert into teams(id, name, code, web) values (1, 'Germany', 'GER', 'https://www.dfb.de/en/en-start/');
+insert into teams(id, name, code, web) values (2, 'Italy', 'ITA', 'https://www.figc.it/');
+insert into teams(id, name, code, web) values (3, 'Switzerland', 'SUI', 'https://www.football.ch/');
+insert into teams(id, name, code, web) values (4, 'Russia', 'RUS', 'http://russiateam.com/');
+insert into teams(id, name, code, web) values (5, 'Norway', 'NOR', 'https://www.fotball.no/');
+insert into teams(id, name, code, web) values (6, 'Mexico', 'MEX', 'https://fmf.mx/');
+insert into teams(id, name, code, web) values (7, 'Denmark', 'DEN', 'https://www.fck.dk/en');
 
 -- German team
 insert into teams_players (team_id, players_id) values (1, 7);
