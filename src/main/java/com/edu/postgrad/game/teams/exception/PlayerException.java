@@ -10,7 +10,4 @@ public class PlayerException extends RuntimeException {
         super("Player not found!");
     }
 
-    public PlayerException(String message) {
-        super(message);
-    }
 }

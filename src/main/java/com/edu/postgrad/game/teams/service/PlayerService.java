@@ -41,7 +41,8 @@ public class PlayerService {
     }
 
     public Player getPlayerByFirstName(String name){
-        return  playerRepository.findPlayerByFirstName(name).orElseThrow(PlayerException::new);
+       return  playerRepository.findPlayerByFirstName(name)
+                .orElseThrow(PlayerException::new);
     }
 
     public List<Player> getPlayerByCountryOfBirth(String country){

@@ -1,6 +1,8 @@
 package com.edu.postgrad.game.teams.rest.ms;
 
 import java.net.URI;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
-public class PlayerMSController {
+public class PlayerController {
     @Autowired
     PlayerService playerService;
 
@@ -48,6 +50,8 @@ public class PlayerMSController {
     @PutMapping("player/{id}")
     public ResponseEntity<Player> updatePlayer(@RequestBody Player player){
         playerService.savePlayer(player);
+        LocalDate now = LocalDate.now();
+        player.setAge(Period.between(player.getDob(), now).getYears());
         return new ResponseEntity<Player>(player, HttpStatus.OK);
     }
 
@@ -67,10 +71,11 @@ public class PlayerMSController {
     @GetMapping(value = {"player/name", "player/name/{name}"})
     public ResponseEntity<Player> getPayerByName(@PathVariable(required = false) Optional<String> name){
         Player player = playerService.getPlayerByFirstName( name.orElse(teamsConfiguration.getPlayerFirstName()));
+        player.setAge(Period.between(player.getDob(), LocalDate.now()).getYears());
         return new ResponseEntity<>(player, HttpStatus.OK);
     }
 
-    @GetMapping("player/countryOfBirth/{countryOfBirth}")
+    @GetMapping("players/countryOfBirth/{countryOfBirth}")
     public List<Player> getPayerByCountryOfBirth(@PathVariable String countryOfBirth){
         List<Player> players = playerService.getPlayerByCountryOfBirth(countryOfBirth);
         return players;

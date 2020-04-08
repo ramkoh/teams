@@ -34,42 +34,43 @@ insert into players (id, first_name, last_name, jersey_number, player_position, 
 -- native profile player
 insert into players (id, first_name, last_name, jersey_number, player_position, dob, country_of_birth) values (29,'native', 'I am player for Native profile', '10', 'FORWARD', '1987-06-24', 'Native Profile');
 insert into players (id, first_name, last_name, jersey_number, player_position, dob, country_of_birth) values (30, 'dev', 'I am player for Dev profile', '10', 'FORWARD', '1987-06-24', 'Dev Profile');
-insert into players (id, first_name, last_name, jersey_number, player_position, dob, country_of_birth) values (31, 'prod' 'I am player for Production profile', '', '10', 'FORWARD', '1987-06-24', 'Production Profile');
+insert into players (id, first_name, last_name, jersey_number, player_position, dob, country_of_birth) values (31, 'Production', 'I am player for Production profile', '10', 'FORWARD', '1987-06-24', 'Production Profile');
+insert into players (id, first_name, last_name, jersey_number, player_position, dob, country_of_birth) values (32, 'ConfigRefreshed', 'I am player for ConfigRefreshed profile', '10', 'FORWARD', '1987-06-24', 'ConfigRefreshed for Production Profile');
 
 
 
-insert into teams(id, name, code, web) values (1, 'Germany', 'GER', 'https://www.dfb.de/en/en-start/');
-insert into teams(id, name, code, web) values (2, 'Italy', 'ITA', 'https://www.figc.it/');
-insert into teams(id, name, code, web) values (3, 'Switzerland', 'SUI', 'https://www.football.ch/');
-insert into teams(id, name, code, web) values (4, 'Russia', 'RUS', 'http://russiateam.com/');
-insert into teams(id, name, code, web) values (5, 'Norway', 'NOR', 'https://www.fotball.no/');
-insert into teams(id, name, code, web) values (6, 'Mexico', 'MEX', 'https://fmf.mx/');
-insert into teams(id, name, code, web) values (7, 'Denmark', 'DEN', 'https://www.fck.dk/en');
+insert into team(id, name, code, web) values (1, 'Germany', 'GER', 'https://www.dfb.de/en/en-start/');
+insert into team(id, name, code, web) values (2, 'Italy', 'ITA', 'https://www.figc.it/');
+insert into team(id, name, code, web) values (3, 'Switzerland', 'SUI', 'https://www.football.ch/');
+insert into team(id, name, code, web) values (4, 'Russia', 'RUS', 'http://russiateam.com/');
+insert into team(id, name, code, web) values (5, 'Norway', 'NOR', 'https://www.fotball.no/');
+insert into team(id, name, code, web) values (6, 'Mexico', 'MEX', 'https://fmf.mx/');
+insert into team(id, name, code, web) values (7, 'Denmark', 'DEN', 'https://www.fck.dk/en');
 
 -- German team
-insert into teams_players (team_id, players_id) values (1, 7);
-insert into teams_players (team_id, players_id) values (1, 8);
-insert into teams_players (team_id, players_id) values (1, 9);
-insert into teams_players (team_id, players_id) values (1, 10);
-insert into teams_players (team_id, players_id) values (1, 11);
-insert into teams_players (team_id, players_id) values (1, 12);
-insert into teams_players (team_id, players_id) values (1, 13);
-insert into teams_players (team_id, players_id) values (1, 14);
-insert into teams_players (team_id, players_id) values (1, 15);
-insert into teams_players (team_id, players_id) values (1, 16);
-insert into teams_players (team_id, players_id) values (1, 17);
+insert into team_players (team_id, players_id) values (1, 7);
+insert into team_players (team_id, players_id) values (1, 8);
+insert into team_players (team_id, players_id) values (1, 9);
+insert into team_players (team_id, players_id) values (1, 10);
+insert into team_players (team_id, players_id) values (1, 11);
+insert into team_players (team_id, players_id) values (1, 12);
+insert into team_players (team_id, players_id) values (1, 13);
+insert into team_players (team_id, players_id) values (1, 14);
+insert into team_players (team_id, players_id) values (1, 15);
+insert into team_players (team_id, players_id) values (1, 16);
+insert into team_players (team_id, players_id) values (1, 17);
 
 --Italin team
-insert into teams_players (team_id, players_id) values (2, 18);
-insert into teams_players (team_id, players_id) values (2, 19);
-insert into teams_players (team_id, players_id) values (2, 20);
-insert into teams_players (team_id, players_id) values (2, 21);
-insert into teams_players (team_id, players_id) values (2, 22);
-insert into teams_players (team_id, players_id) values (2, 23);
-insert into teams_players (team_id, players_id) values (2, 24);
-insert into teams_players (team_id, players_id) values (2, 25);
-insert into teams_players (team_id, players_id) values (2, 26);
-insert into teams_players (team_id, players_id) values (2, 27);
-insert into teams_players (team_id, players_id) values (2, 28);
+insert into team_players (team_id, players_id) values (2, 18);
+insert into team_players (team_id, players_id) values (2, 19);
+insert into team_players (team_id, players_id) values (2, 20);
+insert into team_players (team_id, players_id) values (2, 21);
+insert into team_players (team_id, players_id) values (2, 22);
+insert into team_players (team_id, players_id) values (2, 23);
+insert into team_players (team_id, players_id) values (2, 24);
+insert into team_players (team_id, players_id) values (2, 25);
+insert into team_players (team_id, players_id) values (2, 26);
+insert into team_players (team_id, players_id) values (2, 27);
+insert into team_players (team_id, players_id) values (2, 28);
 
 

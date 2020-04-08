@@ -24,5 +24,9 @@ public class TeamsApplication {
 		return Sampler.ALWAYS_SAMPLE;
 	}
 
+	@Bean
+	public NullAwareBeanUtilsBean nullAwareBeanUtilsBean() {
+		return new NullAwareBeanUtilsBean();
+	}
 }
 
